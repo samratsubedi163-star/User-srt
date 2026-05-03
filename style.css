@@ -1,0 +1,579 @@
+
+
+:root {
+    --primary: #00f0ff;
+    --accent: #ff00f0;
+    --danger: #ff3131;
+    --success: #00ff88;
+    --bg-black: #080808;
+    --glass: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --spring: cubic-bezier(0.4, 0, 0.2, 1.4);
+}
+
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: white;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+
+.bg-layer {
+    position: fixed; inset: 0;
+    background: radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05), transparent),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 240, 0.05), transparent);
+    z-index: -1;
+    animation: bgMovement 8s ease infinite alternate;
+}
+
+@keyframes bgMovement {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+
+.glass-container {
+    height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+
+.auth-card {
+    width: 100%; max-width: 380px; padding: 40px 25px;
+    background: var(--glass); backdrop-filter: blur(30px);
+    border: 1px solid var(--glass-border); border-radius: 35px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    text-align: center;
+}
+
+.glossy-title {
+    font-size: 2.2rem; font-weight: 800;
+    background: linear-gradient(to right, var(--primary), #fff, var(--accent));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 5px;
+}
+
+.tagline { color: #888; font-size: 0.9rem; margin-bottom: 30px; }
+
+/* Inputs */
+.input-wrapper {
+    position: relative; margin-bottom: 20px;
+}
+
+.input-wrapper i {
+    position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+    color: var(--primary); font-size: 1.1rem;
+}
+
+.input-wrapper input {
+    width: 100%; padding: 16px 15px 16px 52px;
+    background: rgba(255,255,255,0.04); border: 1.5px solid var(--glass-border);
+    border-radius: 18px; color: white; font-size: 1rem; transition: 0.3s;
+}
+
+.input-wrapper input:focus {
+    border-color: var(--primary); background: rgba(255,255,255,0.08);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+.main-btn {
+    width: 100%; padding: 16px; border: none; border-radius: 18px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    color: #000; font-weight: 800; font-size: 1rem; cursor: pointer;
+    transition: 0.3s var(--spring); box-shadow: 0 10px 25px rgba(0, 240, 255, 0.3);
+}
+
+.main-btn:active { transform: scale(0.95); }
+
+/* 3. NAVBAR & 360 MENU (FIXED) */
+.navbar {
+    position: fixed; top: 0; width: 100%; height: 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 20px; z-index: 1000;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+/* Menu Box with Border */
+.menu-box {
+    width: 48px; height: 48px; border-radius: 14px;
+    border: 1.8px solid var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: 0.6s var(--spring);
+}
+
+/* 360 Rotation Effect */
+.menu-box.active {
+    transform: rotate(360deg);
+    border-color: var(--accent);
+}
+
+.burger-icon {
+    width: 22px; height: 16px; position: relative;
+    display: flex; flex-direction: column; justify-content: space-between;
+}
+
+.burger-icon span {
+    width: 100%; height: 2.5px; background: var(--primary);
+    border-radius: 10px; transition: 0.4s;
+}
+
+.menu-box.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: var(--accent); }
+.menu-box.active span:nth-child(2) { opacity: 0; }
+.menu-box.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: var(--accent); }
+
+.brand { font-weight: 900; font-size: 1.3rem; letter-spacing: 1px; }
+
+/* 4. SIDEBAR & MENU OVERLAY */
+.sidebar {
+    position: fixed; left: -320px; top: 0; width: 310px; height: 100%;
+    z-index: 2001; transition: 0.5s var(--spring);
+}
+
+.sidebar.active { left: 0; }
+
+.sidebar-content {
+    height: 100%; background: #0a0a0a; border-right: 1.5px solid var(--primary);
+    padding: 60px 20px; box-shadow: 20px 0 50px rgba(0,0,0,0.8);
+}
+
+
+/* Sidebar भित्रको User Email टेक्स्ट फिक्स */
+.sidebar-content h3 {
+    font-size: 14px !important;       /* अक्षर सानो बनाउन */
+    font-weight: 500 !important;      /* धेरै मोटो नदेखाउन */
+    color: #ffffff;
+    margin: 10px 0 5px 0;
+    text-align: center;
+    word-wrap: break-word;            /* लामो इमेललाई तोडेर तल झार्न */
+    overflow-wrap: break-word;
+    display: block;
+    width: 100%;                      /* पूरा चौडाइ लिने */
+    padding: 0 10px;                  /* साइडमा टाँसिन नदिन */
+    opacity: 0.85;                    /* हल्का मत्थर बनाउन */
+}
+
+/* समय (Time) को लागि पनि सानो बनाउन मन लागेमा */
+.sidebar-content p {
+    font-size: 11px !important;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+
+.avatar-ring {
+    width: 85px; height: 85px; margin: 0 auto 15px;
+    border: 2.5px solid var(--primary); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; color: var(--primary);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+}
+
+.nav-item {
+    padding: 16px; margin-bottom: 12px; border-radius: 18px;
+    background: rgba(255,255,255,0.04); display: flex; align-items: center;
+    cursor: pointer; transition: 0.3s; border: 1px solid transparent;
+}
+
+.nav-item:active { background: rgba(0, 240, 255, 0.1); border-color: var(--primary); }
+
+.nav-item i { width: 40px; font-size: 1.3rem; color: var(--primary); }
+
+.logout-btn { color: var(--danger); margin-top: 30px; }
+.logout-btn i { color: var(--danger); }
+
+.menu-closer {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+    z-index: 2000; display: none; backdrop-filter: blur(4px);
+}
+
+/* 5. STORE CONTENT & PRODUCT CARDS */
+.store-body { padding: 110px 20px 40px; }
+.section-label { font-size: 1.4rem; color: var(--primary); margin-bottom: 20px; }
+
+/* कार्डहरू बीच ग्याप राख्न */
+.glass-card {
+    margin-bottom: 15px !important; /* कार्डहरू बीच १५ पिक्सेलको दुरी */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* अन्तिम कार्डको मुनि खाली ठाउँ नछोड्न */
+.glass-card:last-child {
+    margin-bottom: 0 !important;
+}
+
+
+.p-thumb { width: 70px; height: 70px; border-radius: 18px; overflow: hidden; margin-right: 18px; }
+.p-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+.arrow { margin-left: auto; transition: 0.4s var(--spring); color: #555; }
+
+.price-drawer { margin-top: 15px; animation: slideIn 0.4s var(--spring); }
+
+@keyframes slideIn { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
+
+.price-card {
+    background: rgba(255,255,255,0.04); padding: 16px; border-radius: 16px;
+    display: flex; justify-content: space-between; margin-bottom: 10px;
+    border: 1.5px solid transparent; cursor: pointer;
+}
+
+.price-card.active { border-color: var(--primary); background: rgba(0, 240, 255, 0.1); }
+
+.buy-now-btn {
+    width: 100%; padding: 18px; border-radius: 20px; border: none;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    color: #000; font-weight: 900; margin-top: 10px; cursor: pointer;
+}
+
+/* 6. MODALS SYSTEM (BIG QR & FIXED BUTTONS) */
+.full-screen-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.9);
+    z-index: 3000; display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(12px);
+}
+
+.modal {
+    width: 90%; max-width: 380px; padding: 30px 25px;
+    background: #111; border-radius: 32px; border: 1px solid var(--glass-border);
+    position: relative; text-align: center;
+}
+
+/* THE BIG QR SHOW */
+.big-qr-wrapper {
+    width: 100%; padding: 15px; background: #fff;
+    border-radius: 20px; margin: 20px 0;
+    box-shadow: 0 0 40px rgba(255,255,255,0.1);
+}
+
+.big-qr-wrapper img { width: 100%; height: auto; border-radius: 10px; }
+
+/* MODAL ACTION BUTTONS */
+.modal-action-btns {
+    display: flex; gap: 12px; margin-top: 20px;
+}
+
+.btn-cancel-solid {
+    flex: 1; padding: 14px; border-radius: 15px;
+    background: #222; border: 1px solid #333; color: #888;
+    font-weight: 600; cursor: pointer;
+}
+
+.btn-proceed-small {
+    flex: 1.5; padding: 14px; border-radius: 15px;
+    background: var(--primary); border: none; color: #000;
+    font-weight: 800; cursor: pointer;
+}
+
+/* PREMIUM CLEAR HISTORY BTN */
+.premium-clear-btn {
+    width: 100%; padding: 16px; margin-top: 20px; border-radius: 16px;
+    border: 1.8px solid var(--danger); background: transparent;
+    color: var(--danger); font-weight: 800; cursor: pointer;
+    transition: 0.3s;
+}
+
+.premium-clear-btn:hover { background: var(--danger); color: white; }
+
+/* Close Icon for Header */
+.close-icon {
+    position: absolute; right: 25px; top: 25px; font-size: 1.3rem;
+    color: #444; cursor: pointer;
+}
+
+/* Scrollbar History */
+.scrollable { max-height: 300px; overflow-y: auto; padding-right: 5px; }
+
+.history-item {
+    background: rgba(255,255,255,0.03); padding: 15px; border-radius: 15px;
+    margin-bottom: 10px; text-align: left; border-left: 4px solid var(--primary);
+}
+
+/* Utlities */
+.hidden { display: none !important; }
+.disabled { opacity: 0.4; pointer-events: none; }
+
+@keyframes modalFade {
+    from { opacity: 0; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal { animation: modalFade 0.3s var(--spring); }
+
+
+/* 7. ADMIN MESSAGE (NOTICE BOX) FIX */
+.notice-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 5000;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+}
+
+.notice-card {
+    width: 100%; max-width: 320px;
+    background: #121212;
+    border: 1.5px solid var(--glass-border);
+    border-radius: 28px;
+    padding: 25px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    animation: modalFade 0.4s var(--spring);
+}
+
+/* Header with Icon */
+.notice-header {
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; color: white; font-weight: 800;
+    font-size: 1.2rem; margin-bottom: 15px;
+}
+
+.notice-header i { color: var(--primary); }
+
+/* Actual Message Text */
+#adminMsg {
+    color: #bbb;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    display: block;
+}
+
+/* Close Button Fixed */
+.btn-close-notice {
+    width: 100%;
+    padding: 14px;
+    border-radius: 18px;
+    border: none;
+    background: linear-gradient(90deg, #00d2ff, #9d50bb); /* Blue to Purple Gradient */
+    color: white;
+    font-weight: 900;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(157, 80, 187, 0.3);
+    transition: 0.3s;
+}
+
+.btn-close-notice:active {
+    transform: scale(0.96);
+}
+
+/* Close Icon (Top Right) */
+.notice-close-x {
+    position: absolute; right: 20px; top: 20px;
+    color: #444; font-size: 1.2rem; cursor: pointer;
+}
+
+
+/* --- ADMIN MESSAGE BOX PREMIUM FIX --- */
+
+/* १. म्यासेज बस्ने मुख्य बक्स (The Container) */
+#adminMsg {
+    display: block;
+    margin: 20px 0;
+    padding: 15px;
+    
+    /* Movie Star & Neon Look */
+    background: rgba(0, 240, 255, 0.05); /* हल्का नीलो आभा */
+    border: 2px dashed var(--primary); /* ड्यास्ड बोर्डर जसले एडमिनको म्यासेज हो भन्ने बुझाउँछ */
+    border-radius: 15px;
+    
+    /* भिजिबिलिटी बढाउन अक्षरको स्टाइल */
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.6;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    
+    /* बक्सको बाहिर ग्लो (Glow) इफेक्ट */
+    box-shadow: inset 0 0 15px rgba(0, 240, 255, 0.1), 
+                0 0 20px rgba(0, 0, 0, 0.5);
+    
+    position: relative;
+    overflow: hidden;
+}
+
+/* २. म्यासेजको साइडमा सानो एनिमेसन (Optional: जस्तै मुभीमा स्क्यानर चल्छ) */
+#adminMsg::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
+    animation: scanner 3s linear infinite;
+}
+
+@keyframes scanner {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* ३. अफिसियल नोटिसको टाइटललाई अझै प्रस्ट बनाउन */
+.notice-header {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0 0 15px var(--primary);
+    margin-bottom: 10px;
+}
+
+/* ४. क्लोज बटनलाई थप प्रिमियम बनाउने */
+.btn-close-notice {
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(45deg, #00f0ff, #ff00f0);
+    color: #000;
+    font-weight: 900;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(255, 0, 240, 0.4);
+    transition: 0.3s;
+}
+
+.btn-close-notice:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 240, 255, 0.5);
+}
+
+
+/* CANCEL BUTTON RE-DESIGN */
+.btn-cancel-security {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05); /* हल्का पारदर्शी */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    color: #888; /* अलि मत्थर रङ, ताकि Update Password बटन बढी देखियोस् */
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* होभर गर्दा वा थिच्दा हुने परिवर्तन */
+.btn-cancel-security:hover {
+    background: rgba(255, 50, 50, 0.1); /* हल्का रातो आभा */
+    color: #ff3131; /* अक्षर रातो हुने */
+    border-color: rgba(255, 49, 49, 0.3);
+}
+
+.btn-cancel-security:active {
+    transform: scale(0.95);
+}
+
+
+.hidden { display: none !important; }
+
+.notice-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.notice-card {
+    background: #111;
+    border: 2px solid var(--primary);
+    padding: 30px;
+    border-radius: 30px;
+    text-align: center;
+    width: 85%;
+    max-width: 350px;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+    animation: popupAnim 0.4s cubic-bezier(0.4, 0, 0.2, 1.4);
+}
+
+@keyframes popupAnim {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* १. मुख्य बक्स */
+.price-card {
+    position: relative;
+    background: #080808; 
+    border-radius: 18px;
+    padding: 16px;
+    overflow: hidden; /* पानीलाई बाहिर जान नदिन अनिवार्य */
+    z-index: 1;
+    border: 1.5px solid rgba(255, 255, 255, 0.05);
+    transition: all 1.9s ease;
+}
+
+/* २. Active हुँदा तपाईंको प्रिमियम Shadow Glow */
+.price-card.active {
+    border-color: #70e5ff;
+    box-shadow: 0 0 22px #70e5ff, 
+                0 0 44px rgba(0, 165, 233, 0.2);
+}
+
+/* ३. लिक्विड इफेक्ट (::before प्रयोग गरेर) */
+.price-card::before {
+    content: "";
+    position: absolute;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, #70e5ff, #70e5ff); 
+    border-radius: 38%; /* छालको आकार */
+    
+    /* तपाईंले खोज्नुभएको मुख्य लजिक: सुरुमा १००% तल */
+    top: 100%;
+    transform: translateY(0); 
+    
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+}
+
+/* ४. क्लिक गर्दा (Active हुँदा) पानी माथि आउने */
+.price-card.active::before {
+    /* माथि आउँदा ८०% भरिन्छ र २०% खाली रहन्छ */
+    top: 20%; 
+    animation: liquidWave 6s infinite linear;
+}
+
+/* ५. पानीको सतह हल्लिरहने एनिमेसन */
+@keyframes liquidWave {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ६. लिक्विड माथि आउँदा अक्षर नछोपियोस् भन्नका लागि */
+.price-card span, 
+.price-card div {
+    position: relative;
+    z-index: 2;
+    color: white;
+    pointer-events: none; /* क्लिक गर्दा अवरोध नहोस् */
+}
+
+
