@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SRT X CHEATS | PREMIUM STORE</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="bg-layer"></div>
+
+    <div id="authSection" class="glass-container">
+        <div class="auth-card">
+            
+            <div id="loginBox">
+                <h1 class="glossy-title">Premium Access</h1>
+                <p class="tagline">Enter credentials to unlock exclusive cheats</p>
+                
+                <div class="input-wrapper">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="loginEmail" placeholder="Gmail Address" autocomplete="email">
+                </div>
+                
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="loginPass" placeholder="Secret Password">
+                </div>
+                
+                <button id="loginBtn" class="main-btn">SIGN IN <i class="fas fa-sign-in-alt"></i></button>
+                
+                <div class="auth-switch">
+                    New to SRT ? <span onclick="toggleAuth('signup')">Create Account</span>
+                </div>
+            </div>
+
+            <div id="signupBox" class="hidden">
+                <h1 class="glossy-title">Join SRT </h1>
+                <p class="tagline">Create a new account to get started</p>
+                
+                <div class="input-wrapper">
+                    <i class="fas fa-user-plus"></i>
+                    <input type="email" id="regEmail" placeholder="Enter Gmail">
+                </div>
+                
+                <div class="input-wrapper">
+                    <i class="fas fa-key"></i>
+                    <input type="password" id="regPass" placeholder="Create Password">
+                </div>
+                
+                <button id="signupBtn" class="main-btn">REGISTER NOW <i class="fas fa-user-check"></i></button>
+                
+                <div class="auth-switch">
+                    Already a member? <span onclick="toggleAuth('login')">Login here</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="storeUI" class="hidden">
+        
+        <header class="navbar">
+            <div class="menu-box" id="menuBtn">
+                <div class="burger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <div class="brand">SRT X STORE</div>
+            
+            <div class="live-status">
+                <div class="pulse-dot"></div>
+                <span id="userStatus">Checking...</span>
+            </div>
+        </header>
+
+        <aside id="sideDrawer" class="sidebar">
+            <div class="sidebar-content">
+                
+                <div class="profile-area">
+                    <div class="avatar-ring">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 id="displayEmail">User@gmail.com</h3>
+                    
+                       <h3 id="displayEmail">User👤</h3>
+                    <div class="time-box">
+                        <i class="far fa-clock"></i> 
+                        <span id="currentTime">00:00:00</span>
+                    </div>
+                </div>
+
+                <nav class="nav-links">
+                    <div class="nav-item" onclick="openModal('passModal')">
+                        <i class="fas fa-unlock-alt"></i> 
+                        <span>Security Settings</span>
+                    </div>
+                    
+                    <div class="nav-item" onclick="openModal('msgModal')">
+                        <i class="fas fa-comment"></i> 
+                        <span>Admin Message</span>
+                    </div>
+                    
+                    <div class="nav-item" onclick="openModal('historyModal')">
+                        <i class="fas fa-history"></i> 
+                        <span>Message History</span>
+                    </div>
+                    
+                    <a href="https://wa.me/9779827260865" target="_blank" class="nav-item plain-link">
+                        <i class="fab fa-whatsapp"></i> 
+                        <span>WhatsApp Support</span>
+                    </a>
+                    
+                    <div class="nav-item logout-btn" onclick="handleLogout()">
+                        <i class="fas fa-power-off"></i> 
+                        <span>Logout Account</span>
+                    </div>
+                </nav>
+            </div>
+        </aside>
+
+        <div id="menuOverlay" class="menu-closer"></div>
+
+        <main class="store-body">
+            <div class="product-section">
+                <h2 class="section-label">Available Cheats</h2>
+                
+                <div class="product-card glass-card" onclick="togglePrices('p1_list', 'arrow_p1')">
+                    <div class="p-thumb">
+                        <img src="https://i.postimg.cc/Jnwh1T2q/Screenshot-20260421-102516.jpg" alt="Drip Clint">
+                    </div>
+                    <div class="p-info">
+                        <h3>DRIP CLINT GLOBAL</h3>
+                        <p> Non-Root ALL DEVICE Support</p>
+                    </div>
+                    <i class="fas fa-chevron-down arrow" id="arrow_p1"></i>
+                </div>
+
+                <div id="p1_list" class="price-drawer hidden">
+                    <div class="price-card" onclick="selectItem(this, 'DRIP 1 DAY', 120)">
+                        <div class="price-left">
+                            <i class="fas fa-globe"></i>
+                            <span>1 DAY ACCESS</span>
+                       
+                        </div>
+                        <b>Rs 120</b>
+                    </div>
+                    
+                                        <div class="price-card" onclick="selectItem(this, 'DRIP 3 DAY', 220)">
+                        <div class="price-left">
+                            <i class="fas fa-globe"></i>
+                            <span>3 DAY ACCESS</span>
+                        </div>
+                        <b>Rs 220</b>
+                    </div>
+                    
+                    
+                    <div class="price-card" onclick="selectItem(this, 'DRIP 7 DAY', 450)">
+                        <div class="price-left">
+                            <i class="fas fa-globe"></i>
+                            <span>7 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 450</b>
+                    </div>
+                    
+                                        <div class="price-card" onclick="selectItem(this, 'DRIP 15 DAY', 650)">
+                        <div class="price-left">
+                            <i class="fas fa-globe"></i>
+                            <span>15 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 650</b>
+                    </div>
+                    
+                    <div class="price-card" onclick="selectItem(this, 'DRIP 30 DAY', 920)">
+                        <div class="price-left">
+                            <i class="fas fa-globe"></i>
+                            <span>30 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 920</b>
+                    </div>
+                    
+                    <button id="buyBtn_p1" class="buy-now-btn hidden" onclick="startCheckout()">
+                        PROCEED TO BUY <i class="fas fa-shopping-cart"></i>
+                    </button>
+                </div>
+                
+                
+                
+                                <div class="product-card glass-card" onclick="togglePrices('p2_list', 'arrow_p2')">
+                    <div class="p-thumb">
+                        <img src="https://i.postimg.cc/Jnwh1T2q/Screenshot-20260421-102516.jpg" alt="Drip Clint">
+                    </div>
+                    <div class="p-info">
+                        <h3>DRIP CLINT (ROOT)</h3>
+                        <p> ROOR DEVICE Support</p>
+                    </div>
+                    <i class="fas fa-chevron-down arrow" id="arrow_p2"></i>
+                </div>
+
+                <div id="p2_list" class="price-drawer hidden">
+                    <div class="price-card" onclick="selectItem(this, 'DRIP ROOT 1 DAY', 180)">
+                        <div class="price-left">
+                            <i class="fas fa-mobile"></i>
+                            <span>1 DAY ACCESS</span>
+                       
+                        </div>
+                        <b>Rs 170</b>
+                    </div>
+                    
+                                        
+                    
+                    
+                    <div class="price-card" onclick="selectItem(this, 'DRIP ROOT 7 DAY', 580)">
+                        <div class="price-left">
+                            <i class="fas fa-mobile"></i>
+                            <span>7 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 550</b>
+                    </div>
+                    
+                     
+                    
+                    <div class="price-card" onclick="selectItem(this, 'DRIP ROOT 30 DAY', 1080)">
+                        <div class="price-left">
+                            <i class="fas fa-mobile"></i>
+                            <span>30 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 1080</b>
+                    </div>
+                    
+                    <button id="buyBtn_p2" class="buy-now-btn hidden" onclick="startCheckout()">
+                        PROCEED TO BUY <i class="fas fa-shopping-cart"></i>
+                    </button>
+                </div>
+                
+                
+                
+                
+                                <div class="product-card glass-card" onclick="togglePrices('p3_list', 'arrow_p3')">
+                    <div class="p-thumb">
+                        <img src="https://i.postimg.cc/Jnwh1T2q/Screenshot-20260421-102516.jpg" alt="Drip Clint">
+                    </div>
+                    <div class="p-info">
+                        <h3>DRIP CLINT (PC)</h3>
+                        <p> PC EMOLUTAR Support</p>
+                    </div>
+                    <i class="fas fa-chevron-down arrow" id="arrow_p3"></i>
+                </div>
+
+                <div id="p3_list" class="price-drawer hidden">
+                    <div class="price-card" onclick="selectItem(this, 'DRIP PC 1 DAY', 180)">
+                        <div class="price-left">
+                            <i class="fas fa-computer"></i>
+                            <span>1 DAY ACCESS</span>
+                       
+                        </div>
+                        <b>Rs 200</b>
+                    </div>
+                    
+                                        
+                    
+                    
+                    <div class="price-card" onclick="selectItem(this, 'DRIP PC 7 DAY', 550)">
+                        <div class="price-left">
+                            <i class="fas fa-computer"></i>
+                            <span>7 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 650</b>
+                    </div>
+                    
+                                        <div class="price-card" onclick="selectItem(this, 'DRIP PC 15 DAY', 850)">
+                        <div class="price-left">
+                            <i class="fas fa-computer"></i>
+                            <span>15 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 900</b>
+                    </div>
+                    
+                    <div class="price-card" onclick="selectItem(this, 'DRIP PC 30 DAY', 1250)">
+                        <div class="price-left">
+                            <i class="fas fa-computer"></i>
+                            <span>30 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 1450</b>
+                    </div>
+                    
+                    <button id="buyBtn_p3" class="buy-now-btn hidden" onclick="startCheckout()">
+                        PROCEED TO BUY <i class="fas fa-shopping-cart"></i>
+                    </button>
+                </div>
+                
+                
+                
+                
+                
+                <div class="product-card glass-card" onclick="togglePrices('p4_list', 'arrow_p4')">
+    <div class="p-thumb">
+        <img src="https://i.postimg.cc/fRGsXVfy/Screenshot-20260421-102611.jpg" alt="HG Cheats">
+    </div>
+    <div class="p-info">
+        <h3>HG CHEATS (NON ROOT)</h3>
+        <p>NON-ROOT ALL DEVICE SUPPORT</p>
+    </div>
+    <i class="fas fa-chevron-down arrow" id="arrow_p4"></i>
+</div>
+<div id="p4_list" class="price-drawer hidden">
+                    <div class="price-card" onclick="selectItem(this, 'HG CHEATS 1 DAY', 130)">
+                        <div class="price-left">
+                            <i class="fas fa-gift"></i>
+                            <span>1 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 130</b>
+                    </div>
+                    
+                    
+                    
+                    <div class="price-card" onclick="selectItem(this, 'HG CHEATS 7 DAY', 350)">
+                        <div class="price-left">
+                            <i class="fas fa-gift"></i>
+                            <span>7 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 350</b>
+                    </div>
+                    
+                                        <div class="price-card" onclick="selectItem(this, 'HG CHEATS 10 DAY', 450)">
+                        <div class="price-left">
+                            <i class="fas fa-gift"></i>
+                            <span>10 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 450</b>
+                    </div>
+                    
+                    <div class="price-card" onclick="selectItem(this, 'HG CHEATS 30 DAY', 750)">
+                        <div class="price-left">
+                            <i class="fas fa-gift"></i>
+                            <span>30 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 750</b>
+                    </div>
+                    
+                    
+                                        <button id="buyBtn_p4" class="buy-now-btn hidden" onclick="startCheckout()">
+                        PROCEED TO BUY <i class="fas fa-shopping-cart"></i>
+                    </button>
+                </div>
+                
+           
+                    <div class="product-card glass-card" onclick="togglePrices('p5_list', 'arrow_p5')">
+    <div class="p-thumb">
+        <img src="https://i.postimg.cc/fRGsXVfy/Screenshot-20260421-102611.jpg" alt="HG Cheats">
+    </div>
+    <div class="p-info">
+        <h3>HG CHEATS (ROOT)</h3>
+        <p>ROOT APK</p>
+    </div>
+    <i class="fas fa-chevron-down arrow" id="arrow_p5"></i>
+</div>
+<div id="p5_list" class="price-drawer hidden">
+                    <div class="price-card" onclick="selectItem(this, 'HG CHEATS 1 DAY', 130)">
+                        <div class="price-left">
+                            <i class="fas fa-mobile"></i>
+                            <span>1 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 130</b>
+                    </div>
+                   
+                    
+                    <div class="price-card" onclick="selectItem(this, 'HG CHEATS 7 DAY', 350)">
+                        <div class="price-left">
+                            <i class="fas fa-mobile"></i>
+                            <span>7 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 350</b>
+                    </div>
+                    
+                                        <div class="price-card" onclick="selectItem(this, 'HG CHEATS 10 DAY', 450)">
+                        <div class="price-left">
+                            <i class="fas fa-mobile"></i>
+                            <span>10 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 450</b>
+                    </div>
+                    
+                    <div class="price-card" onclick="selectItem(this, 'HG CHEATS 30 DAY', 750)">
+                        <div class="price-left">
+                            <i class="fas fa-mobile"></i>
+                            <span>30 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 750</b>
+                    </div>
+                    
+                    
+                                        <button id="buyBtn_p5" class="buy-now-btn hidden" onclick="startCheckout()">
+                        PROCEED TO BUY <i class="fas fa-shopping-cart"></i>
+                    </button>
+                </div>
+                
+                
+                
+
+<div class="product-card glass-card" onclick="togglePrices('p6_list', 'arrow_p6')">
+    <div class="p-thumb">
+        <img src="https://i.postimg.cc/RV2ypjJM/Screenshot-20260421-102813.jpg" alt="Pato Team">
+    </div>
+    <div class="p-info">
+        <h3>PATO TEAM</h3>
+        <p>NON ROOT SAFE ( BRUTAL & NORMAL ) MOD</p>
+    </div>
+    <i class="fas fa-chevron-down arrow" id="arrow_p6"></i>
+</div>
+<div id="p6_list" class="price-drawer hidden">
+
+                    <div class="price-card" onclick="selectItem(this, 'PATO BRUTAL 3 DAY', 550)">
+                        <div class="price-left">
+                            <i class="fas fa-crown"></i>
+                            <span>BRUTAL 3 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 550</b>
+                    </div>
+    
+                    <div class="price-card" onclick="selectItem(this, 'PATO BRUTAL 7 DAY', 750)">
+                        <div class="price-left">
+                            <i class="fas fa-crown"></i>
+                            <span>BRUTAL 7 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 850</b>
+                    </div>
+        
+                    <div class="price-card" onclick="selectItem(this, 'PATO NORMAL 7 DAY', 650)">
+                        <div class="price-left">
+                            <i class="fas fa-crown"></i>
+                            <span>NORMAL 7 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 750</b>
+                    </div>
+        
+                    <div class="price-card" onclick="selectItem(this, 'PATO NORMAL 15 DAY', 1250)">
+                        <div class="price-left">
+                            <i class="fas fa-crown"></i>
+                            <span>NORMAL 15 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 1250</b>
+                    </div>
+    
+    
+                    <div class="price-card" onclick="selectItem(this, 'PATO NORMAL 30 DAY', 1550)">
+                        <div class="price-left">
+                            <i class="fas fa-crown"></i>
+                            <span>NORMAL 30 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 1550</b>
+                    </div>
+    
+    <button id="buyBtn_p6" class="buy-now-btn hidden" onclick="startCheckout()">PROCEED TO BUY <i class="fas fa-shopping-cart"></i></button>
+</div>
+
+<div class="product-card glass-card" onclick="togglePrices('p7_list', 'arrow_p7')">
+    <div class="p-thumb">
+        <img src="https://i.postimg.cc/R07kHX0k/fluorite-ios-ff-og-1765886845.webp" alt="iOS Fluorite">
+    </div>
+    <div class="p-info">
+        <h3>IOS FLUORITE</h3>
+        <p>IOS ( iphone ) FLUORITE</p>
+    </div>
+    <i class="fas fa-chevron-down arrow" id="arrow_p7"></i>
+</div>
+<div id="p7_list" class="price-drawer hidden">
+
+    
+                        <div class="price-card" onclick="selectItem(this, 'Gbox Clarification', 1000)">
+                        <div class="price-left">
+                            <i class="fas fa-apple"></i>
+                            <span>Gbox Clarification</span>
+                        </div>
+                        <b>Rs 1000</b>
+                    </div>
+                    <div class="price-card" onclick="selectItem(this, 'FLUORITE 1 DAY', 550)">
+                        <div class="price-left">
+                            <i class="fas fa-apple"></i>
+                            <span>1 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 550</b>
+                    </div>
+    
+        
+                    <div class="price-card" onclick="selectItem(this, 'FLUORITE 7 DAY', 1550)">
+                        <div class="price-left">
+                            <i class="fas fa-apple"></i>
+                            <span>7 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 1550</b>
+                    </div>
+    
+                    <div class="price-card" onclick="selectItem(this, 'FLUORITE 30 DAY', 3200)">
+                        <div class="price-left">
+                            <i class="fas fa-apple"></i>
+                            <span>30 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 3200</b>
+                    </div>
+    
+    <button id="buyBtn_p7" class="buy-now-btn hidden" onclick="startCheckout()">PROCEED TO BUY <i class="fas fa-shopping-cart"></i></button>
+</div>
+
+<div class="product-card glass-card" onclick="togglePrices('p8_list', 'arrow_p8')">
+    <div class="p-thumb">
+        <img src="https://i.postimg.cc/x8ChBQPd/IMG-20260421-102934-585.jpg" alt="Prime Hook">
+    </div>
+    <div class="p-info">
+        <h3>PRIME HOOK</h3>
+        <p>NON ROOT MOD APK</p>
+    </div>
+    <i class="fas fa-chevron-down arrow" id="arrow_p8"></i>
+</div><div id="p8_list" class="price-drawer hidden">
+                    <div class="price-card" onclick="selectItem(this, 'PRIME 1 DAY', 100)">
+                        <div class="price-left">
+                            <i class="fas fa-bug"></i>
+                            <span>1 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 100</b>
+                    </div>
+    
+                    <div class="price-card" onclick="selectItem(this, 'PRIME 3 DAY', 1250)">
+                        <div class="price-left">
+                            <i class="fas fa-bug"></i>
+                            <span>3 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 160</b>
+                    </div>
+    
+    
+                    <div class="price-card" onclick="selectItem(this, 'PRIME 7 DAY', 300)">
+                        <div class="price-left">
+                           
+                            <i class="fas fa-bug"></i>
+                            <span>7 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 300</b>
+                    </div>
+    
+                    <div class="price-card" onclick="selectItem(this, 'PRIME 10 DAY', 500)">
+                        <div class="price-left">
+                            <i class="fas fa-bug"></i>
+                            <span>10 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 500</b>
+                    </div>
+    <button id="buyBtn_p8" class="buy-now-btn hidden" onclick="startCheckout()">PROCEED TO BUY <i class="fas fa-shopping-cart"></i></button>
+</div>
+
+<div class="product-card glass-card" onclick="togglePrices('p9_list', 'arrow_p9')">
+    <div class="p-thumb">
+        <img src="https://i.postimg.cc/65Fdfcgp/Screenshot-20260425-150006.jpg" alt="BR Mod">
+    </div>
+    <div class="p-info">
+        <h3>BR MOD ROOT</h3>
+        <p>ROOT APK MAIN ID SAFE</p>
+    </div>
+    <i class="fas fa-chevron-down arrow" id="arrow_p9"></i>
+</div>
+<div id="p9_list" class="price-drawer hidden">
+                    <div class="price-card" onclick="selectItem(this, 'BR 1 DAY', 150)">
+                        <div class="price-left">
+                            <i class="fas fa-gun"></i>
+                            <span>1 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 150</b>
+                    </div>
+    
+                    <div class="price-card" onclick="selectItem(this, 'BR 7 DAY', 450)">
+                        <div class="price-left">
+                            <i class="fas fa-gun"></i>
+                            <span>7 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 450</b>
+                    </div>
+                    <div class="price-card" onclick="selectItem(this, 'BR 15 DAY', 750)">
+                        <div class="price-left">
+                            <i class="fas fa-gun"></i>
+                            <span>15 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 750</b>
+                    </div>
+    
+                    <div class="price-card" onclick="selectItem(this, 'BR MOD 30 DAY', 1250)">
+                        <div class="price-left">
+                            <i class="fas fa-gun"></i>
+                            <span>30 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 1250</b>
+                    </div>
+    <button id="buyBtn_p9" class="buy-now-btn hidden" onclick="startCheckout()">PROCEED TO BUY <i class="fas fa-shopping-cart"></i></button>
+</div>
+
+                
+              <div class="product-card glass-card" onclick="togglePrices('p10_list', 'arrow_p10')">
+    <div class="p-thumb">
+        <img src="https://i.postimg.cc/65Fdfcgp/Screenshot-20260425-150006.jpg" alt="BR Mod">
+    </div>
+    <div class="p-info">
+        <h3>BR MOD PC</h3>
+        <p>PC EMOLATER SAFE</p>
+    </div>
+    <i class="fas fa-chevron-down arrow" id="arrow_p10"></i>
+</div>
+<div id="p10_list" class="price-drawer hidden">
+                    <div class="price-card" onclick="selectItem(this, 'BR PC 1 DAY', 180)">
+                        <div class="price-left">
+                            <i class="fas fa-computer"></i>
+                            <span>1 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 180</b>
+                    </div>
+    
+                    <div class="price-card" onclick="selectItem(this, 'BR PC 10 DAY', 650)">
+                        <div class="price-left">
+                            <i class="fas fa-computer"></i>
+                            <span>10 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 650</b>
+                    </div>
+                    <div class="price-card" onclick="selectItem(this, 'BR PC 30 DAY', 1250)">
+                        <div class="price-left">
+                            <i class="fas fa-computer"></i>
+                            <span>30 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 1250</b>
+                    </div>
+    
+    
+    <div class="price-card" onclick="selectItem(this, 'BR PC  (BYPASS + AIM SILENT) 1 DAY', 250)">
+                        <div class="price-left">
+                            <i class="fas fa-computer"></i>
+                            <span>1 DAYS  (BYPASS + AIM SILENT)</span>
+                        </div>
+                        <b>Rs 250</b>
+                    </div>
+    
+                    <div class="price-card" onclick="selectItem(this, 'BR PC (BYPASS + AIM SILENT)10 DAY', 750)">
+                        <div class="price-left">
+                            <i class="fas fa-computer"></i>
+                            <span>10 DAYS  (BYPASS + AIM SILENT)</span>
+                        </div>
+                        <b>Rs 750</b>
+                    </div>
+                    <div class="price-card" onclick="selectItem(this, 'BR PC  (BYPASS + AIM SILENT) 30 DAY', 1450)">
+                        <div class="price-left">
+                            <i class="fas fa-computer"></i>
+                            <span>30 DAYS  (BYPASS + AIM SILENT)</span>
+                        </div>
+                        <b>Rs 1450</b>
+                    </div>
+                    
+    <button id="buyBtn_p10" class="buy-now-btn hidden" onclick="startCheckout()">PROCEED TO BUY <i class="fas fa-shopping-cart"></i></button>
+</div>
+  
+                
+                
+                
+<div class="product-card glass-card" onclick="togglePrices('p11_list', 'arrow_p11')">
+    <div class="p-thumb">
+        <img src="https://i.postimg.cc/Y0HwXZkt/IMG-20260430-190421-873.jpg" alt="XYZ Root">
+    </div>
+    <div class="p-info">
+        <h3>XYZ ROOT</h3>
+        <p>ROOT BRUTAL MOD ACCESS</p>
+    </div>
+    <i class="fas fa-chevron-down arrow" id="arrow_p11"></i>
+</div>
+<div id="p11_list" class="price-drawer hidden">
+                     <div class="price-card" onclick="selectItem(this, 'XYZ 3 DAY', 140)">
+                        <div class="price-left">
+                            <i class="fas fa-shield"></i>
+                            <span>3 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 140</b>
+                    </div>
+                    <div class="price-card" onclick="selectItem(this, 'XYZ 7 DAY', 240)">
+                        <div class="price-left">
+                            <i class="fas fa-shield"></i>
+                            <span>7 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 240</b>
+                    </div>
+    
+                    <div class="price-card" onclick="selectItem(this, 'XYT 15 DAY', 450)">
+                        <div class="price-left">
+                            <i class="fas fa-shield"></i>
+                            <span>15 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 450</b>
+                    </div>
+    
+    <div class="price-card" onclick="selectItem(this, 'XYT 30 DAY', 850)">
+                        <div class="price-left">
+                            <i class="fas fa-shield"></i>
+                            <span>30 DAYS ACCESS</span>
+                        </div>
+                        <b>Rs 850</b>
+                    </div>
+    <button id="buyBtn_p11" class="buy-now-btn hidden" onclick="startCheckout()">PROCEED TO BUY <i class="fas fa-shopping-cart"></i></button>
+</div>
+
+                
+                
+                
+                
+                
+                
+                
+
+                <div class="empty-space"></div>
+                <p class="footer-note">...</p>
+            </div>
+        </main>
+    </div>
+
+    <div id="modalOverlay" class="full-screen-overlay hidden">
+        
+        <div id="passModal" class="modal glass-modal hidden">
+            <div class="modal-header">
+                <h3>Update Security</h3>
+                <i class="fas fa-times close-icon" onclick="closeModals()"></i>
+            </div>
+            <div class="modal-body">
+                <div class="input-wrapper no-icon">
+                    <input type="password" id="oldPass" placeholder="Enter Old Password">
+                </div>
+                <div class="input-wrapper no-icon">
+                    <input type="password" id="newPass" placeholder="Enter New Password">
+                </div>
+                <button class="main-btn" onclick="processPassUpdate()">UPDATE PASSWORD</button>
+            <button class="btn-cancel-security" onclick="closeModals()">Cancel</button>
+
+            </div>
+        </div>
+
+        <div id="msgModal" class="modal glass-modal hidden">
+            <div class="modal-header">
+                <h3><i class="fas fa-bullhorn"></i> Official Notice</h3>
+                <i class="fas fa-times close-icon" onclick="closeModals()"></i>
+            </div>
+            <div class="modal-body">
+                <div class="message-display-box">
+                    <p id="adminMsg">Syncing with server, please wait...</p>
+                </div>
+                <button class="main-btn small-btn" onclick="closeModals()">CLOSE</button>
+            </div>
+        </div>
+
+        <div id="historyModal" class="modal glass-modal hidden">
+            <div class="modal-header">
+                <h3><i class="fas fa-history"></i> Purchase History</h3>
+                <i class="fas fa-times close-icon" onclick="closeModals()"></i>
+            </div>
+            <div class="modal-body scrollable">
+                <div id="historyList"></div>
+                <button class="premium-clear-btn" onclick="confirmDeleteHistory()">
+                    <i class="fas fa-trash-alt"></i> WIPE ALL RECORDS
+                </button>
+            </div>
+        </div>
+
+        <div id="checkoutModal" class="modal glass-modal hidden">
+            <div id="checkoutStep1">
+                <h3>Customer Information</h3>
+                <div class="input-wrapper no-icon">
+                    <input type="text" id="payName" placeholder="Your Full Name">
+                </div>
+                <div class="input-wrapper no-icon">
+                    <input type="number" id="payWA" placeholder="WhatsApp Number">
+                </div>
+                <div class="modal-action-btns">
+                    <button class="btn-cancel-solid" onclick="closeModals()">CANCEL</button>
+                    <button class="btn-proceed-small" onclick="showQR()">NEXT STEP</button>
+                </div>
+            </div>
+            
+            <div id="checkoutStep2" class="hidden">
+                <h3>Scan QR to Pay</h3>
+                <div class="big-qr-wrapper">
+                    <img src="https://i.postimg.cc/zXm07q9C/Screenshot-20260425-142906.jpg" alt="Payment QR">
+                </div>
+                <p class="timer-label">Checking payment in <span id="timerSec">10</span>s</p>
+                <div class="modal-action-btns">
+                    <button class="btn-cancel-solid" onclick="closeModals()">EXIT</button>
+                    <button id="finalPayBtn" class="btn-proceed-small disabled" disabled onclick="sendPurchase()">I HAVE PAID</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="deleteWarning" class="modal alert-modal hidden">
+            <div class="warn-ui">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Final Confirmation</h3>
+                <p>Are you sure you want to delete all logs? This cannot be reversed.</p>
+            </div>
+            <div class="modal-action-btns">
+                <button class="btn-no" onclick="hideDeleteWarning()">NO, KEEP</button>
+                <button class="btn-yes" onclick="processHistoryDelete()">YES, CLEAR</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
